@@ -1,0 +1,3 @@
+.PHONY: test
+test: ## Run go test against codebase
+	@go test ./...
