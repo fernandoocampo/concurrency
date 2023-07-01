@@ -14,8 +14,8 @@ func TestWaitForSum(t *testing.T) {
 	b := 2
 	var result int
 	expectedResult := 3
-	timeout1Sec := 1 * time.Second
-	ctx, cancel := context.WithTimeout(context.TODO(), timeout1Sec)
+	timeout := time.Duration(1) * time.Second
+	ctx, cancel := context.WithTimeout(context.TODO(), timeout)
 	defer cancel()
 
 	// When
