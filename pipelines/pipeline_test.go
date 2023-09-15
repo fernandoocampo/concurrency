@@ -23,3 +23,26 @@ func TestReverseSlice(t *testing.T) {
 		t.Errorf("want: %+v, but got: %+v", want, got)
 	}
 }
+
+func TestMultipleOperations(t *testing.T) {
+	// Given
+	values := []int{1, 2, 3, 4, 5, 6}
+	want := []int{4, 16, 36, 64, 100, 144}
+	ctx, cancel := context.WithTimeout(context.TODO(), 2*time.Second)
+	defer cancel()
+	// When
+	got := pipelines.IntCollector(
+		ctx,
+		pipelines.ProductData(
+			ctx,
+			pipelines.SumData(
+				ctx,
+				pipelines.IntGenerator(ctx, values),
+			),
+		),
+	)
+	// Then
+	if !slices.Equal(want, got) {
+		t.Errorf("want: %+v, but got: %+v", want, got)
+	}
+}
