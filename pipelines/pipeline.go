@@ -4,6 +4,38 @@ import (
 	"context"
 )
 
+func NewRepeatGenerator(ctx context.Context, values ...any) <-chan any {
+	valueStream := make(chan any)
+	go func() {
+		defer close(valueStream)
+		for {
+			for _, v := range values {
+				select {
+				case <-ctx.Done():
+					return
+				case valueStream <- v:
+				}
+			}
+		}
+	}()
+	return valueStream
+}
+
+func NewTakeGenerator(ctx context.Context, takeCount int, values <-chan any) <-chan any {
+	takeStream := make(chan any)
+	go func() {
+		defer close(takeStream)
+		for i := 0; i < takeCount; i++ {
+			select {
+			case <-ctx.Done():
+				return
+			case takeStream <- <-values:
+			}
+		}
+	}()
+	return takeStream
+}
+
 func ProductData(ctx context.Context, intStream <-chan int) <-chan int {
 	productStream := make(chan int)
 	go func() {
