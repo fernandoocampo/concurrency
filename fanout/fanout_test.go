@@ -11,6 +11,7 @@ import (
 var defaultTimeout = 5 * time.Second
 
 func TestFanoutData(t *testing.T) {
+	t.Parallel()
 	// Given
 	givenNumberOfResults := 100
 	expectedNumberOfResults := 100
@@ -40,6 +41,7 @@ func TestFanoutData(t *testing.T) {
 }
 
 func TestFanoutDataWithSemaphore(t *testing.T) {
+	t.Parallel()
 	// Given
 	givenNumberOfResults := 100
 	expectedNumberOfResults := 100

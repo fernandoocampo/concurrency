@@ -10,6 +10,7 @@ import (
 )
 
 func TestTeeChannel(t *testing.T) {
+	t.Parallel()
 	// Given
 	timeout := 2 * time.Second
 

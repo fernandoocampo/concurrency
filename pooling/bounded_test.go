@@ -9,6 +9,7 @@ import (
 )
 
 func TestBoundedWorkPooling(t *testing.T) {
+	t.Parallel()
 	// Given
 	timeout := 2 * time.Second
 	ctx, cancel := context.WithTimeout(context.TODO(), timeout)

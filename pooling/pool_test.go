@@ -9,6 +9,7 @@ import (
 )
 
 func TestSumInput(t *testing.T) {
+	t.Parallel()
 	// Given
 	want := uint32(5050)
 	timeout := 2 * time.Second

@@ -9,6 +9,7 @@ import (
 )
 
 func TestWaitForTask(t *testing.T) {
+	t.Parallel()
 	// Given
 	ctx, cancel := context.WithTimeout(context.TODO(), 5*time.Second)
 	defer cancel()

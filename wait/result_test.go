@@ -9,6 +9,7 @@ import (
 )
 
 func TestWaitForSum(t *testing.T) {
+	t.Parallel()
 	// Given
 	a := 1
 	b := 2

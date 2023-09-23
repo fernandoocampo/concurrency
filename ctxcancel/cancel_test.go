@@ -7,6 +7,7 @@ import (
 )
 
 func TestDo(t *testing.T) {
+	t.Parallel()
 	// Given
 	done := make(chan any)
 	want := "work not completed"

@@ -7,6 +7,7 @@ import (
 )
 
 func TestOrDone(t *testing.T) {
+	t.Parallel()
 	// Given
 	done := make(chan struct{})
 	defer close(done)

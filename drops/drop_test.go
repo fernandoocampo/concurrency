@@ -9,6 +9,7 @@ import (
 )
 
 func TestDropSomething(t *testing.T) {
+	t.Parallel()
 	// Given
 	givenWork := 1000
 	givenCapacity := 100
