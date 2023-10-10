@@ -29,7 +29,7 @@ func TestDropSomething(t *testing.T) {
 	if len(got) == 0 {
 		t.Errorf("result cannot be empty")
 	}
-	if len(got) >= givenWork {
-		t.Errorf("wanted work should be less than %d", givenWork)
+	if len(got) > givenWork {
+		t.Errorf("wanted work should be less than %d, but got: %d", givenWork, len(got))
 	}
 }
